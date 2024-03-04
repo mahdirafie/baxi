@@ -1,3 +1,5 @@
+import 'package:baxi/bottomsheets/baxi_bar_bottom_sheet.dart';
+import 'package:baxi/bottomsheets/baxi_box_bottom_sheet.dart';
 import 'package:baxi/map/choose_des.dart';
 import 'package:baxi/map/map.dart';
 import 'package:baxi/map/map_service.dart';
@@ -9,7 +11,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
 class ChooseOriginScreen extends StatefulWidget {
-  const ChooseOriginScreen({super.key});
+  final String service;
+  const ChooseOriginScreen({super.key, required this.service});
 
   @override
   State<ChooseOriginScreen> createState() => _ChooseOriginScreenState();
@@ -20,6 +23,13 @@ class _ChooseOriginScreenState extends State<ChooseOriginScreen> {
   final TextEditingController searchController = TextEditingController();
   double? userlat;
   double? userlng;
+
+  Map<String, int> services = {
+    'baxi': 0,
+    'baxi_female': 1,
+    'baxi_box': 2,
+    'baxi_bar': 3
+  };
 
   Future<Position> _getCurrentLocation() async {
     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -96,9 +106,11 @@ class _ChooseOriginScreenState extends State<ChooseOriginScreen> {
                     left: 25, right: 25, top: 8, bottom: 8),
                 child: Row(
                   children: [
-                    GestureDetector(onTap: () {
-                      Navigator.of(context).pop();
-                    },child: const Icon(Icons.arrow_back)),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Icon(Icons.arrow_back)),
                     const SizedBox(
                       width: 16,
                     ),
@@ -113,8 +125,7 @@ class _ChooseOriginScreenState extends State<ChooseOriginScreen> {
                                           await MapService.addressToLocation(
                                               searchController.text,
                                               userlat!,
-                                              userlng!
-                                              );
+                                              userlng!);
                                       mapController.move(searchedLocation, 15);
                                     } catch (e) {
                                       debugPrint(e.toString());
@@ -161,10 +172,27 @@ class _ChooseOriginScreenState extends State<ChooseOriginScreen> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             LatLng location = mapController.camera.center;
                             userlat = location.latitude;
                             userlng = location.longitude;
+                            if (services[widget.service] == 2) {
+                              await showModalBottomSheet(
+                                isDismissible: false,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) =>
+                                    const BaxiBoxBottomSheet(),
+                              );
+                            } else if(services[widget.service] == 3) {
+                                await showModalBottomSheet(
+                                isDismissible: false,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) =>
+                                    const BaxiBarBottomSheet(),
+                              );
+                            }
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) {
                                 return ChooseDestinationScreen(

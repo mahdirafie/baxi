@@ -135,7 +135,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                       );
                                     },
                                     openBuilder: (context, action) {
-                                      return const ChooseOriginScreen();
+                                      return const ChooseOriginScreen(service: 'baxi',);
                                     },
                                   ),
                                 ))

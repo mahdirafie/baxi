@@ -1,3 +1,4 @@
+import 'package:baxi/map/choose_org.dart';
 import 'package:baxi/profile/profile.dart';
 import 'package:baxi/search/search.dart';
 import 'package:flutter/cupertino.dart';
@@ -94,9 +95,11 @@ class HomeScreen extends StatelessWidget {
                     top: 10,
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                          return const ProfileScreen();
-                        },));
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) {
+                            return const ProfileScreen();
+                          },
+                        ));
                       },
                       child: Container(
                         width: 40,
@@ -109,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                             ],
                             border: Border.all(
                                 color: theme.colorScheme.onPrimary, width: 1)),
-                          child: const Icon(Icons.more_horiz),
+                        child: const Icon(Icons.more_horiz),
                       ),
                     ))
               ],
@@ -130,18 +133,34 @@ class HomeScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    switch(index) {
+                    switch (index) {
                       case 0:
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                          return const SearchScreen();
-                        },));
-                      break;
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) {
+                            return const SearchScreen();
+                          },
+                        ));
+                        break;
                       case 1:
-                      break;
+                      //TODO: CHECKING IF THE CLIENT IS FEMALE
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) {
+                            return const SearchScreen();
+                          },
+                        ));
+                        break;
                       case 2:
-                      break;
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              const ChooseOriginScreen(service: 'baxi_box'),
+                        ));
+                        break;
                       case 3:
-                      break;
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              const ChooseOriginScreen(service: 'baxi_bar'),
+                        ));
+                        break;
                     }
                   },
                   child: Container(
@@ -150,7 +169,8 @@ class HomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.grey.withOpacity(0.3), blurRadius: 10)
+                              color: Colors.grey.withOpacity(0.3),
+                              blurRadius: 10)
                         ]),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
