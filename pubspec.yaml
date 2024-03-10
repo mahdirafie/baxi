@@ -44,6 +44,11 @@ dependencies:
   geolocator: ^11.0.0
   flutter_bloc: ^8.1.4
   animations: ^2.0.11
+  persian_datetime_picker: ^2.6.0
+  image_picker: ^1.0.7
+  path_provider: ^2.1.2
+  path: ^1.8.3
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +92,9 @@ flutter:
     - family: IranYekan
       fonts:
         - asset: assets/fonts/iran_yekan.ttf
+    - family: Nastaliq
+      fonts:
+        - asset: assets/fonts/IranNastaliq.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

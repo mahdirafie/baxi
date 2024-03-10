@@ -64,17 +64,6 @@ class _MapWidgetState extends State<MapWidget> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            // floatingActionButton: FloatingActionButton.extended(
-            //     onPressed: () {
-            // _getCurrentLocation().then((value) {
-            //   userlat = value.latitude;
-            //   userlng = value.longitude;
-            //   setState(() {});
-            //   mapController.move(LatLng(userlat!, userlng!), 16);
-            // });
-            //       _liveLocation();
-            //     },
-            //     label: Icon(CupertinoIcons.location)),
             body: FlutterMap(
       mapController: widget.mapController,
       options: MapOptions(

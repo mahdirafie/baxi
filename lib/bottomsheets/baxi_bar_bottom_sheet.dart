@@ -77,7 +77,7 @@ class _BaxiBarBottomSheetState extends State<BaxiBarBottomSheet> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Row(

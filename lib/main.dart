@@ -1,5 +1,7 @@
-import 'package:baxi/bottomsheets/baxi_box_bottom_sheet.dart';
-import 'package:baxi/map/choose_org.dart';
+import 'package:baxi/auth/sign_up_customer/sing_up_customer.dart';
+import 'package:baxi/auth/sign_up_driver/driver_sign_up_process.dart';
+import 'package:baxi/auth/sign_up_driver/sign_up_driver.dart';
+import 'package:baxi/home/driver_home.dart';
 import 'package:baxi/splash/splash_screen.dart';
 import 'package:baxi/theme.dart';
 import 'package:flutter/material.dart';

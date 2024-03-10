@@ -152,15 +152,15 @@ class _ChooseDestinationScreenState extends State<ChooseDestinationScreen> {
               )),
           if (desLocation == null)
             Positioned(
+              left: MediaQuery.of(context).size.width / 2 - 35,
+              right: MediaQuery.of(context).size.width / 2 - 35,
+              bottom: MediaQuery.of(context).size.height / 2,
+              top: MediaQuery.of(context).size.height / 2 - 70,
               child: Image.asset(
                 'assets/images/destination_locator.png',
                 width: 70,
                 height: 70,
               ),
-              left: MediaQuery.of(context).size.width / 2 - 35,
-              right: MediaQuery.of(context).size.width / 2 - 35,
-              bottom: MediaQuery.of(context).size.height / 2,
-              top: MediaQuery.of(context).size.height / 2 - 70,
             )
         ]),
       ),

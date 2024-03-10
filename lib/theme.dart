@@ -18,4 +18,8 @@ class LightTheme {
   static const Color secondaryTextColor = Colors.grey;
 
   static Color dividerColor = Colors.grey.withOpacity(0.3);
+  static ElevatedButtonThemeData elevatedButton1 = ElevatedButtonThemeData(
+      style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(onPrimary),
+          foregroundColor: MaterialStatePropertyAll(primary), ));
 }
